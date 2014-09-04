@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="346.0" prefWidth="446.0" 
+            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="fx.javaee.samples.billpayment.BillPaymentController">
+    <fx:define>
+        <ToggleGroup fx:id="paymentType" />
+    </fx:define>
+    <children>
+        <Button layoutX="146.2275390625" layoutY="242.5" mnemonicParsing="false" onAction="#pay" text="Pay" />
+        <Button layoutX="210.0" layoutY="243.0" mnemonicParsing="false" text="Reset" />
+        <RadioButton layoutX="146.546875" layoutY="182.39999961853027" mnemonicParsing="false" selected="true" 
+                     toggleGroup="$paymentType" userData="Credit" text="Credit"/>
+        <RadioButton layoutX="251.0" layoutY="182.0" mnemonicParsing="false" 
+                     toggleGroup="$paymentType" userData="Debit" text="Debit" />
+        <TextField fx:id="amount" layoutX="146.0" layoutY="126.0" promptText="Amount in $" />
+        <Label layoutX="147.387451171875" layoutY="101.5" text="Amount:" />
+    </children>
+</AnchorPane>
