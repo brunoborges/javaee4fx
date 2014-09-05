@@ -15,7 +15,6 @@ import javax.interceptor.InvocationContext;
 import javax.websocket.DeploymentException;
 import javax.websocket.Session;
 import javax.websocket.WebSocketContainer;
-import org.jboss.weld.injection.spi.InjectionContext;
 
 @Interceptor
 @AutoConnectServerEndpoint("")
@@ -27,8 +26,12 @@ public class WebSocketAutoConnectInterceptor {
     private final Map<Object, Session> openSessions = Collections.synchronizedMap(new HashMap<>());
 
     @AroundConstruct
-    public void aroundConstructor(InjectionContext ic) {
-        ic.proceed(); // proceed with construction to get target object
+    public void aroundConstructor(InvocationContext ic) {
+        try {
+            ic.proceed(); // proceed with construction to get target object
+        } catch (Exception ex) {
+            Logger.getLogger(WebSocketAutoConnectInterceptor.class.getName()).log(Level.SEVERE, null, ex);
+        }
         Object client = ic.getTarget();
 
         // because of WEBSOCKET_SPEC-229 we can't do this check.
