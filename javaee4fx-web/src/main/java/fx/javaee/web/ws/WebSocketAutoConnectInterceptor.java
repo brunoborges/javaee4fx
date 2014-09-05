@@ -45,6 +45,8 @@ public class WebSocketAutoConnectInterceptor {
 
         Session session;
         try {
+            // Tyrus 1.8.2 and Undertow 1.1-Beta6 fail here because 'client'
+            // is a CDI proxied object
             session = wsContainer.connectToServer(client, URI.create(serverURI));
             openSessions.put(client, session);
         } catch (DeploymentException | IOException ex) {

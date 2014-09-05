@@ -6,6 +6,10 @@
 
     <interceptors>
         <class>fx.javaee.samples.billpayment.LoggedInterceptor</class>
+        <!-- Uncomment this to see bugs related to using @ClientEndpoint as CDI bean -->
+        <!--
+        <class>fx.javaee.web.ws.WebSocketAutoConnectInterceptor</class>
+        -->
     </interceptors>
     
 </beans>

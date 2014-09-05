@@ -1,5 +1,6 @@
 package fx.javaee.samples.billpayment;
 
+import fx.javaee.web.ws.AutoConnectServerEndpoint;
 import fx.javaee.web.ws.WebSocketAutoConnect;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -12,10 +13,15 @@ import javax.websocket.Session;
 
 @Dependent
 @ClientEndpoint
+// Uncomment annotation below to see bug with using CDI beans as @ClientEndpoint
+// Uncomment the interceptor inside beans.xml
+// Comment the 'extends WebSocketAutoConnect'
+//@AutoConnectServerEndpoint("ws://echo.websocket.org")
 public class EchoWebSocketClient extends WebSocketAutoConnect {
 
     private Session session;
 
+    // Comment this constructor if you commented the 'extends WebSocketAutoConnect'
     public EchoWebSocketClient() {
         super("ws://echo.websocket.org");
     }
