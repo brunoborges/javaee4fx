@@ -14,7 +14,7 @@ import javax.interceptor.InterceptorBinding;
 @Target({TYPE})
 public @interface AutoConnectServerEndpoint {
 
-    @Nonbinding
+    @Nonbinding 
     public String value();
 
 }
